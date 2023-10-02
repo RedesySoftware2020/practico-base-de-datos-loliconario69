@@ -36,22 +36,22 @@ CREATE TABLE MATERIAS (
 CREATE TABLE GRUPOS (
     idGrupo VARCHAR(10) PRIMARY KEY,
     Nombre VARCHAR(255) NOT NULL,
-    año_electivo INT NOT NULL,
+    ano_electivo INT NOT NULL,
     fecha_Creacion INT NOT NULL
 );
 
 CREATE TABLE FORO (
     IdForo BIGINT IDENTITY(1,1) PRIMARY KEY,
-    Información VARCHAR(MAX),
+    Informacion VARCHAR(MAX),
     Data VARBINARY(MAX)
 );
 
 CREATE TABLE TAREAS (
     IdTareas INT IDENTITY(1,1) PRIMARY KEY,
-    Descripción VARCHAR(MAX) NOT NULL,
+    Descripcion VARCHAR(MAX) NOT NULL,
     Fecha_de_Vencimiento VARCHAR(255) NOT NULL,
     Archivo VARBINARY(MAX),
-    Fecha_de_Creación DATE NOT NULL
+    Fecha_de_Creacion DATE NOT NULL
 );
 
 CREATE TABLE DATOS_FORO (
@@ -67,7 +67,7 @@ CREATE TABLE DATOS_FORO (
 CREATE TABLE HISTORIAL_REGISTRO (
     IdUsuario VARCHAR(8) PRIMARY KEY,
     app VARCHAR(255),
-    acción VARCHAR(255),
+    accion VARCHAR(255),
     Mensaje VARCHAR(255),
     FOREIGN KEY (IdUsuario) REFERENCES USUARIOS(Cedula)
 );
@@ -90,7 +90,7 @@ CREATE TABLE GRADO (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
     carrera_id INT,
-    FOREIGN KEY (carrera_id) REFERENCES CARRERA(Id),
+    FOREIGN KEY (carrera_id) REFERENCES CARRERA(Id)
 );
 
 CREATE TABLE DICTA (
@@ -135,7 +135,7 @@ CREATE TABLE ENTREGA (
     IdAlumno VARCHAR(8),
     IdTareas INT,
     Archivo VARBINARY(MAX),
-    Calificación INT,
+    Calificacion INT,
     Fecha_entrega INT NOT NULL,
     PRIMARY KEY (IdAlumno, IdTareas),
     FOREIGN KEY (IdAlumno) REFERENCES ALUMNOS(Cedula),
@@ -157,11 +157,11 @@ CREATE TABLE ESTAN (
 CREATE TABLE RE_HACER_TAREA (
     IdTareasNueva BIGINT IDENTITY(1,1),
     IdTareas INT,
-    Calificación INT,
+    Calificacion INT,
     Fecha_entrega INT NOT NULL,
     Archivo VARBINARY(MAX),
     PRIMARY KEY (IdTareasNueva, IdTareas),
-    FOREIGN KEY (IdTareas) REFERENCES TAREAS(IdTareas),
+    FOREIGN KEY (IdTareas) REFERENCES TAREAS(IdTareas)
 );
 
 CREATE TABLE CARRERA_MATERIA (
